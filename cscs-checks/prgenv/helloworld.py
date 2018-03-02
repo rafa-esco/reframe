@@ -26,7 +26,7 @@ class HelloWorldBaseTest(RegressionTest):
 
         self.valid_systems = ['daint:gpu', 'daint:mc', 'dom:gpu', 'dom:mc',
                               'kesch:cn', 'kesch:pn', 'leone:normal',
-                              'monch:compute']
+                              'monch:compute', 'tave:knl']
 
         self.valid_prog_environs = ['PrgEnv-cray', 'PrgEnv-gnu',
                                     'PrgEnv-intel', 'PrgEnv-pgi']

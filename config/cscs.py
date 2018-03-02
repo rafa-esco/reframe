@@ -55,6 +55,37 @@ class ReframeSettings:
                 }
             },
 
+            'tave': {
+                'descr': 'Tave',
+                'hostnames': ['tave'],
+                'modules_system': 'tmod',
+                'resourcesdir': '/apps/common/regression/resources',
+                'partitions': {
+                    'login': {
+                        'scheduler': 'local',
+                        'modules': [],
+                        'access':  [],
+                        'environs': ['PrgEnv-cray', 'PrgEnv-gnu',
+                                     'PrgEnv-intel', 'PrgEnv-pgi'],
+                        'descr': 'Login nodes',
+                        'max_jobs': 4
+                    },
+
+                    'knl': {
+                        'scheduler': 'nativeslurm',
+                        'modules': [],
+                        'environs': ['PrgEnv-cray', 'PrgEnv-gnu',
+                                     'PrgEnv-intel', 'PrgEnv-pgi'],
+                        'descr': 'Hybrid nodes (KNL)',
+                        'max_jobs': 100,
+                        'resources': {
+                            'switches': ['--switches={num_switches}']
+                        }
+                    },
+
+                }
+            },
+
             'dom': {
                 'descr': 'Dom TDS',
                 'hostnames': ['dom'],
