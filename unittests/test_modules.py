@@ -8,7 +8,7 @@ from reframe.core.exceptions import ConfigError, EnvironError
 from unittests.fixtures import TEST_MODULES
 
 
-class _TestModulesSystem(unittest.TestCase):
+class _TestModulesSystem:
     def setUp(self):
         self.modules_system = modules.get_modules_system()
         self.environ_save = EnvironmentSnapshot()
@@ -67,7 +67,7 @@ class _TestModulesSystem(unittest.TestCase):
         self.assertIn('testmod_boo', conflict_list)
 
 
-class TestTModModulesSystem(_TestModulesSystem):
+class TestTModModulesSystem(_TestModulesSystem, unittest.TestCase):
     def setUp(self):
         try:
             modules.init_modules_system('tmod')
@@ -77,7 +77,7 @@ class TestTModModulesSystem(_TestModulesSystem):
             super().setUp()
 
 
-class TestLModModulesSystem(_TestModulesSystem):
+class TestLModModulesSystem(_TestModulesSystem, unittest.TestCase):
     def setUp(self):
         try:
             modules.init_modules_system('lmod')
@@ -87,7 +87,7 @@ class TestLModModulesSystem(_TestModulesSystem):
             super().setUp()
 
 
-class TestNoModModulesSystem(_TestModulesSystem):
+class TestNoModModulesSystem(_TestModulesSystem, unittest.TestCase):
     def setUp(self):
         try:
             modules.init_modules_system()

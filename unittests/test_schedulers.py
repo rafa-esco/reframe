@@ -18,7 +18,7 @@ from reframe.core.shell import BashScriptBuilder
 from unittests.fixtures import TEST_RESOURCES, partition_with_scheduler
 
 
-class _TestJob(unittest.TestCase):
+class _TestJob:
     def setUp(self):
         self.workdir = tempfile.mkdtemp(dir='unittests')
         self.testjob = self.job_type(
@@ -119,7 +119,7 @@ class _TestJob(unittest.TestCase):
         self.assertRaises(JobNotStartedError, self.testjob.finished)
 
 
-class TestLocalJob(_TestJob):
+class TestLocalJob(_TestJob, unittest.TestCase):
     def assertProcessDied(self, pid):
         try:
             os.kill(pid, 0)
@@ -236,7 +236,7 @@ class TestLocalJob(_TestJob):
                          globals(), locals())
 
 
-class TestSlurmJob(_TestJob):
+class TestSlurmJob(_TestJob, unittest.TestCase):
     @property
     def job_type(self):
         return getscheduler('slurm')
