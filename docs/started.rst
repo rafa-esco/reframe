@@ -7,16 +7,20 @@ Requirements
 
 * Python 3.5 or higher. Python 2 is not supported.
 
-  .. note:: 
-    .. versionchanged:: 2.8
-      A functional TCL modules system is no more required. ReFrame can now operate without a modules system at all.
+.. note::
+  .. versionchanged:: 2.8
+    A functional TCL modules system is no more required. ReFrame can now operate without a modules system at all.
 
 Optional
 ~~~~~~~~
 
-* For running the unit tests of the framework, the `nose <https://pypi.python.org/pypi/nose>`__ Python module is needed.
+* For running the unit tests of the framework, the `pytest <https://pytest.org/>`__ unittesting framework is needed.
 
 You are advised to run the `unit tests <#running-the-unit-tests>`__ of the framework after installing it on a new system to make sure that everything works fine.
+
+.. note::
+  .. versionchanged:: 2.12
+    Migration to the `pytest <https://pytest.org/>`__ unittesting framework.
 
 Getting the Framework
 ---------------------
@@ -42,24 +46,24 @@ The output should look like the following:
 
 .. code:: bash
 
-    test_check_failure (unittests.test_cli.TestFrontend) ... ok
-    test_check_sanity_failure (unittests.test_cli.TestFrontend) ... ok
-    test_check_submit_success (unittests.test_cli.TestFrontend) ... SKIP: job submission not supported
-    test_check_success (unittests.test_cli.TestFrontend) ... ok
-    test_checkpath_recursion (unittests.test_cli.TestFrontend) ... ok
-    test_custom_performance_check_failure (unittests.test_cli.TestFrontend) ... ok
-    ...
-    test_copytree (unittests.test_utility.TestOSTools) ... ok
-    test_grep (unittests.test_utility.TestOSTools) ... ok
-    test_inpath (unittests.test_utility.TestOSTools) ... ok
-    test_subdirs (unittests.test_utility.TestOSTools) ... ok
-    test_always_true (unittests.test_utility.TestUtilityFunctions) ... ok
-    test_standard_threshold (unittests.test_utility.TestUtilityFunctions) ... ok
+  unittests/test_cli.py::TestFrontend::test_check_failure PASSED                         [  0%]
+  unittests/test_cli.py::TestFrontend::test_check_sanity_failure PASSED                  [  1%]
+  unittests/test_cli.py::TestFrontend::test_check_setup_failure PASSED                   [  1%]
+  unittests/test_cli.py::TestFrontend::test_check_submit_success SKIPPED                 [  1%]
+  unittests/test_cli.py::TestFrontend::test_check_success PASSED                         [  1%]
+  unittests/test_cli.py::TestFrontend::test_checkpath_recursion PASSED                   [  2%]
+  unittests/test_cli.py::TestFrontend::test_execution_modes PASSED                       [  2%]
+    .
+    .
+    .
+  unittests/test_utility.py::TestImportFromFile::test_load_relpath PASSED                [ 98%]
+  unittests/test_utility.py::TestImportFromFile::test_load_unknown_path PASSED           [ 98%]
+  unittests/test_utility.py::TestDebugRepr::test_builtin_types PASSED                    [ 99%]
+  unittests/test_utility.py::TestDebugRepr::test_obj_repr PASSED                         [ 99%]
+  unittests/test_utility.py::TestChangeDirCtxManager::test_change_dir_working PASSED     [ 99%]
+  unittests/test_utility.py::TestChangeDirCtxManager::test_exception_propagation PASSED  [100%]
 
-    ----------------------------------------------------------------------
-    Ran 235 tests in 33.842s
-
-    OK (SKIP=7)
+  =========================== 366 passed, 21 skipped in 29.16 seconds ==========================
 
 You will notice in the output that all the job submission related tests have been skipped.
 The test suite detects if the current system has a job submission system and is configured for ReFrame (see `Configuring ReFrame for your site <configure.html>`__) and it will skip all the unsupported unit tests.
