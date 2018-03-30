@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
-# import unittest
-import nose
+import pytest
 
 if __name__ == '__main__':
-    # unittest.main()
-    nose.main()
+    pytest.main()
