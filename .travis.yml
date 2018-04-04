@@ -7,4 +7,4 @@ install:
     - pip install -r requirements.txt
 
 script:
-    ./test_reframe.py
+    ./test_reframe.py --dist=loadscope -n 4
