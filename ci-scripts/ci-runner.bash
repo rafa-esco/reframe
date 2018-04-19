@@ -146,7 +146,7 @@ if [ "X${MODULEUSE}" != "X" ]; then
     module use ${MODULEUSE}
 fi
 
-module load reframe-2.12-dev1
+module load reframe/2.12-dev1
 
 echo "=============="
 echo "Loaded Modules"
